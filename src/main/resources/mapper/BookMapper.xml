@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yong.book.mapper.BookMapper">
+	<select id="selectBook" resultType="cn.yong.book.pojo.Book">
+		SELECT	`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis` FROM book
+WHERE category = "${category}" AND ${sort} >  -1
+ORDER BY ${sort} DESC LIMIT ${page},${limit}
+	</select>
+	
+	<select id="selectFinishBook" resultType="cn.yong.book.pojo.Book">
+				SELECT `id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis` FROM book
+WHERE category = "${category}" AND `status` = "${status}" AND ${sort} >  -1
+ORDER BY ${sort} DESC LIMIT ${page},${limit}
+	</select>
+	
+	<select id="selectFinishAllBook" resultType="cn.yong.book.pojo.Book">
+				SELECT `id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis` FROM book
+WHERE `status` = "${status}" AND ${sort} >  -1
+ORDER BY ${sort} DESC LIMIT ${page},${limit}
+	</select>
+	
+	<select id="selectBookByNumber" resultType="cn.yong.book.pojo.Book">
+		SELECT	`number`,`category`,`name`,`author`,`status`,`img`,`synopsis`,`data` FROM book WHERE `number` = "${bookNumber}"
+	</select>
+	
+	<select id="selectBookByHits" resultType="cn.yong.book.pojo.Book">
+		SELECT	`number`,`category`,`name`,`author`,`status`,`img`,`synopsis`,`data` FROM book
+	WHERE ${hits} >  (SELECT ${hits} FROM book ORDER BY ${hits} DESC  LIMIT 1000, 1)
+	ORDER BY ${hits} DESC
+	LIMIT 0,100
+    </select>
+	
+	<select id="selectBookByTotalHits" resultType="cn.yong.book.pojo.Book">
+		SELECT	`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis` FROM book
+	ORDER BY totalHits DESC
+    </select>
+	
+	<select id="selectCatalogueByNumber" resultType="cn.yong.book.pojo.Catalogue">
+		SELECT	`number`,`name`,`count`,`url` FROM catalogue WHERE `number` = "${bookNumber}"
+	</select>
+	
+	<select id="selectBookBodyByCount" resultType="cn.yong.book.pojo.Catalogue">
+		SELECT	`name`,`url` FROM catalogue WHERE `count` = "${count}" AND `number` = "${bookNumber}"
+	</select>
+	
+	<select id="selectBookLikeAuthorOrName" resultType="cn.yong.book.pojo.Book">
+		SELECT	`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis` FROM book
+WHERE author LIKE "%${author}%" OR `name` LIKE "%${name}%"  OR `number` = "${name}" LIMIT ${page},${limit}
+	</select>
+	
+	<select id="selectNewBook" resultType="cn.yong.book.pojo.Book">
+		SELECT	book.`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,
+		`data`,newbookdate.`date`,`totalHits`,`monthlyClicks`,`weeklyClicks`,
+		`totalRecommendedNumber`,`monthlyRecommendedNumber`,
+		`weekRecommendedNumber`,`img`,`synopsis` FROM book JOIN newbookdate ON book.`number` = newbookdate.`id` ORDER BY newbookdate.`date` DESC
+	</select>
+	
+	<insert id="insertBook">
+		insert into `book` (`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,
+		`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,
+		`weekRecommendedNumber`,`img`,`synopsis`)
+		values (${book.id},"${book.number}","${book.category}","${book.name}","${book.author}","${book.status}","${book.collection}","${book.wordNumber}","${book.data}","${book.totalHits}","${book.monthlyClicks}",
+		"${book.weeklyClicks}","${book.totalRecommendedNumber}","${book.monthlyRecommendedNumber}","${book.weekRecommendedNumber}",
+		"${book.img}","${book.synopsis}")
+	</insert>
+	
+	<update id="updateBook">
+		update `book` set `number` = "${book.number}",`category` = "${book.category}",`name`="${book.name}",
+		`author`="${book.author}",`status`="${book.status}",`collection`="${book.collection}",`wordNumber`="${book.wordNumber}",
+		`data` = "${book.data}",`totalHits`="${book.totalHits}",`monthlyClicks`="${book.monthlyClicks}",`weeklyClicks`="${book.weeklyClicks}",
+		`totalRecommendedNumber`="${book.totalRecommendedNumber}",`monthlyRecommendedNumber`="${book.monthlyRecommendedNumber}",
+		`weekRecommendedNumber`="${book.weekRecommendedNumber}",`img`="${book.img}"
+		where id = ${book.id}
+	</update>
+	
+	<delete id="deleteBookById">
+		delete from `book` where `number` = "${number}"
+	</delete>
+	
+	<delete id="bathDeleteBookById">
+		delete from `book` where
+		<foreach collection="data" item="item" index="index" separator="or">
+			`number` = ${data[index]}
+		</foreach>
+		
+	</delete>
+</mapper>

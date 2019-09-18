@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yong.book.mapper.UserMapper">
+	<sql id="BASE_TABLE">
+		user
+	</sql>
+	<sql id="BASE_COLUMN">
+        `id`,`userName`,`userEmail`,`userSex`,`userStatus`,`userGrade`,`userEndTime`
+	</sql>
+	
+	<select id="getAll" resultType="cn.yong.book.pojo.User">
+		SELECT `userId`,`userName`,`userEmail`,`userSex`,`userStatus`,`userGrade`,`userEndTime`,`userPhone`
+		FROM
+		<include refid="BASE_TABLE" />
+	</select>
+
+
+	<insert id="insertUser">
+		insert into `user` (`userName`,`userEmail`,`userSex`,`userStatus`,`userGrade`,`userEndTime`,`userPhone`)
+		values ("${user.userName}","${user.userEmail}","${user.userSex}","${user.userStatus}","${user.userGrade}","${user.userEndTime}","${user.userPhone}")
+	</insert>
+	
+	<update id="updateUser">
+		update `user` set `userName` = "${user.userName}",`userEmail` = "${user.userEmail}",`userSex`="${user.userSex}",`userGrade`="${user.userGrade}",`userPhone`="${user.userPhone}"
+		where userId = ${user.userId}
+	</update>
+	
+	<delete id="deleteUserById">
+		delete from `user` where userId = ${id}
+	</delete>
+	
+	<delete id="bathDeleteUserById">
+		delete from `user` where
+		<foreach collection="data" item="item" index="index" separator="or">
+			userId = ${data[index]}
+		</foreach>
+	</delete>
+</mapper>

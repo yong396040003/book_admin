@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用文档</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <style>
+        .layui-card-header{
+            height: 56px;
+        }
+        .layui-card-header h1{
+            font-weight: normal;
+            font-size: 28px;
+            line-height: 56px;
+        }
+    </style>
+</head>
+<body style="padding-top: 10px">
+<div class="layui-card">
+    <div class="layui-card-header"><h1>功能介绍</h1></div>
+    <div class="layui-card-body">
+        <div class="layui-collapse" lay-accordion>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">内容管理</h2>
+                <div class="layui-colla-content layui-show">
+                    <div class="layui-collapse" lay-accordion>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">书籍分类</h2>
+                            <div class="layui-colla-content layui-show">
+                                <span>里面所有类型书籍的功能都是一样的，所以我们选择其中一类进行说明：</span>
+                                <p><h2 style="line-height: initial;color: orangered">都市言情</h2></p>
+                                <span>其中包含九大功能。</span>
+                                <p>1、查询：查询是全局模糊查询，根据书号/书名/作者进行查询。</p>
+                                <p>2、添加：已知书籍信息对其进行添加。</p>
+                                <p>3、批量导入：根据表格中书籍信息进行导入（目前后台暂时只支持xls、csv、xlsx的解析）。</p>
+                                <p>4、批量导出：对已知表格数据进行导出（可勾选指定的，可根据page、limit的限制指定导出，目前支持导出格式为：xlsx、csv、ods、xlsb、fods、biff2）。</p>
+                                <p>5、批量删除：根据勾选进行多项删除。</p>
+                                <p>6、刷新：跟新table表。</p>
+                                <p>7、编辑：对指定单项数据进行修改。</p>
+                                <p>8、删除：对指定单项数据进行删除。</p>
+                                <p>9、预览：对书籍进行查看，并且能看到章节。</p>
+                                <br>
+                                <span style="color: orangered">注意：layui自带的导出会出现异常，而自定义导出虽能导出xls,但上传之后poi无法解析，so暂不支持对xls的导出。管理员正在努力更新中......</span>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">新添书籍</h2>
+                            <div class="layui-colla-content">故名思意就是新添加的书籍。</div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">书架</h2>
+                            <div class="layui-colla-content">不知道干嘛的。嗯，暂时先让他在这把。</div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">排行榜</h2>
+                            <div class="layui-colla-content">对所有书籍根据totalHits排序（只限前百哟）。</div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">帮助</h2>
+                            <div class="layui-colla-content">对于一个穷屌丝来说。最需要的帮助就是各位大大点击底部捐赠作者，微信、支付宝都可以扫一扫😁，后续我还将推出银联支付功能哦❤❤❤</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">用户中心</h2>
+                <div class="layui-colla-content">
+                    <div class="layui-collapse" lay-accordion>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">管理员</h2>
+                            <div class="layui-colla-content">废话不多说，叫大哥！！！</div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">用户中心</h2>
+                            <div class="layui-colla-content">机密，不要被用户看到（各个菜鸡的存放地址）。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">系统设置</h2>
+                <div class="layui-colla-content">
+                    <div class="layui-collapse" lay-accordion>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">Nav操作</h2>
+                            <div class="layui-colla-content">
+                                对左侧菜单栏进行增、删、改、查四样基本操作。<br>
+                                正经：非专业或技术人员非特殊情况禁止修改。<br>
+                                不正经：菜鸡改完出现任何后果哥概不负责。
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">系统参数</h2>
+                            <div class="layui-colla-content">不知道怎么写，看看吧。仅供参考。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">使用文档</h2>
+                <div class="layui-colla-content">当前就是使用文档！还有比这个更有利的说明方式吗？</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="./static/layui/layui.js"></script>
+<script>
+    //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+</script>
+</body>
+</html>

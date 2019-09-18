@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yong.book.mapper.SaveBookToSqlMapper">
+	<!--book表-->
+	<sql id="BASE_TABLE_book">
+		book
+	</sql>
+	<sql id="BASE_COLUMN_book">
+		`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis`
+	</sql>
+
+	<!--catalogue表-->
+	<sql id="BASE_TABLE_catalogue">
+		catalogue
+	</sql>
+	<sql id="BASE_COLUMN_catalogue">
+		`number`,`name`,`count`,`url`
+	</sql>
+	
+	<!--插入所有数据-->
+	<!--item集合中每一个元素进行迭代时的别名，
+        index表示在迭代过程中，每次迭代到的位置，
+        open该语句以什么开始，
+        separator在每次进行迭代之间以什么符号作为分隔 符，
+        close以什么结束-->
+	<insert id="saveBook">
+		INSERT INTO
+		<include refid="BASE_TABLE_book" />
+		(<include refid="BASE_COLUMN_book" />)
+		VALUES
+		<foreach collection="books" item="item" index="index" separator=",">
+			(${item.number},'${item.category}','${item.name}',
+			'${item.author}','${item.status}',${item.collection},'${item.wordNumber}',
+			'${item.data}',${item.totalHits},${item.monthlyClicks},${item.weeklyClicks},
+			${item.totalRecommendedNumber},${item.monthlyRecommendedNumber},${item.weekRecommendedNumber},
+			'${item.img}','${item.synopsis}')
+		</foreach>
+	</insert>
+	
+	<insert id="saveCatalogue">
+		INSERT INTO
+		<include refid="BASE_TABLE_catalogue" />
+		(<include refid="BASE_COLUMN_catalogue" />)
+		VALUES
+		<foreach collection="catalogues" item="item" index="index" separator=",">
+			(${item.number},'${item.name}',${item.count},'${item.url}')
+		</foreach>
+	</insert>
+</mapper>

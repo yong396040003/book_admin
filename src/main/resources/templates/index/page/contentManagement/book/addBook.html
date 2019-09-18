@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加图书</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+</head>
+<body>
+<!--添加book-->
+<div id="addBook" style="margin-top: 5px">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="text" name="id" readonly="readonly" value="0"
+                           class="layui-input id">
+                </div>
+                <div class="layui-form-mid layui-word-aux">唯一标识</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">书号</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="number" required lay-verify="required" placeholder="请输入书号"
+                           autocomplete="off"
+                           class="layui-input number">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">书名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入书名"
+                           autocomplete="off"
+                           class="layui-input name">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面地址</label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" name="img" required lay-verify="required" placeholder="请输入图片地址" autocomplete="off"
+                       class="layui-input img">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">作者</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="text" name="author" required lay-verify="required" placeholder="请输入作者"
+                           autocomplete="off"
+                           class="layui-input author">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <select class="status" name="status">
+                        <option value="">请选择</option>
+                        <option value="连载中" selected="selected">连载中</option>
+                        <option value="完结">完结</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">字数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="wordNumber" required lay-verify="required" placeholder="请输入字数"
+                           autocomplete="off"
+                           value="0"
+                           class="layui-input wordNumber">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">最近更新</label>
+                <div class="layui-input-inline">
+                    <input name="data" required lay-verify="required" class="layui-input data" id="data" type="text" placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">小说类型</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <select name="category" class="category">
+                        <option value="请选择">请选择</option>
+                        <option selected="selected">玄幻魔法</option>
+                        <option>武侠仙侠</option>
+                        <option>都市言情</option>
+                        <option>历史军事</option>
+                        <option>网游竞技</option>
+                        <option>科幻小说</option>
+                        <option>恐怖灵异</option>
+                        <option>女生小说</option>
+                        <option>其他小说</option>
+                        <option>完本小说</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">收藏</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="collection" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input collection">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">总点击数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="totalHits" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input totalHits">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">月点击数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="monthlyClicks" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input monthlyClicks">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">周点击数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="weeklyClicks" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input weeklyClicks">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">总推荐数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="totalRecommendedNumber" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input totalRecommendedNumber">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">月推荐数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="monthlyRecommendedNumber" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input monthlyRecommendedNumber">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">周推荐数</label>
+                <div class="layui-input-inline" style="width: 100px">
+                    <input type="number" name="weekRecommendedNumber" required lay-verify="required" value="0"
+                           autocomplete="off"
+                           class="layui-input weekRecommendedNumber">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">简介</label>
+            <div class="layui-input-block">
+                <textarea name="synopsis" placeholder="无" class="layui-textarea synopsis"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" style="width: 100%;bottom: 0;">
+            <div class="layui-input-block" style="text-align: center;">
+                <button id="submit" class="layui-btn submit" lay-submit="true" lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+                <button id="cancel" class="layui-btn layui-btn-primary">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="static/layui/layui.js"></script>
+<script>
+    layui.use(['table', 'jquery', 'layer', 'laydate', 'form', 'upload'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var laydate = layui.laydate;
+        var form = layui.form;
+
+        <!--日期-->
+        laydate.render({
+            elem: '#data',
+            type: 'datetime',
+            format: 'yyyy-MM-dd HH:mm:ss',
+            trigger: 'click'
+        });
+
+        $('#cancel').on('click', function () {
+            parent.layer.close(parent.layer.index);
+        });
+
+        var isOne = true;
+
+        //提交数据
+        form.on('submit(formDemo)', function (data) {
+            if (isOne) {
+                isOne = false;
+                data.field.wordNumber += '字';
+                $.ajax({
+                    type: 'POST',
+                    async: true,
+                    url: 'bookUpdate.do',
+                    contentType: "application/json",
+                    data: JSON.stringify(data.field),
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.code > 0) {
+                            parent.layer.close(parent.layer.index);
+                            parent.layer.msg(res.msg);
+                        } else {
+                            layer.open({
+                                title: 'error',
+                                content: res.msg,
+                                btn: 'ok',
+                                btnAlign: 'c',
+                                btn1: function (index, layer0) {
+                                    layer.close(index);
+                                }
+                            });
+                            isOne = true;
+                        }
+                    }
+                })
+            } else {
+                layer.msg("请不要重复提交");
+            }
+
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加用户</title>
+</head>
+
+<link rel="stylesheet" href="static/layui/css/layui.css">
+<body>
+
+<!--添加nav-->
+<div id="addBook" style="margin-top: 5px">
+    <form class="layui-form form" action="">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="userId" readonly="readonly"
+                           class="layui-input userId" value="0">
+                </div>
+                <div class="layui-form-mid layui-word-aux">唯一标识</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="userName" required lay-verify="required" placeholder="请输入用户名"
+                           autocomplete="off"
+                           class="layui-input userName">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="radio" class="boy" name="userSex" value="男" title="男">
+                <input type="radio" class="girl" name="userSex" value="女" title="女" checked="checked">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="email" name="userEmail" required lay-verify="required" placeholder="请输入用户邮箱"
+                           autocomplete="off"
+                           class="layui-input userEmail">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">联系电话</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="userPhone" required lay-verify="required" placeholder="请输入联系电话"
+                           autocomplete="off"
+                           class="layui-input userPhone">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户等级</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="userGrade" required lay-verify="required" placeholder="请输入用户等级"
+                           autocomplete="off"
+                           class="layui-input userGrade">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <button id="submit" class="layui-btn submit" lay-submit="true" lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+            <button id="cancel" class="layui-btn layui-btn-primary">取消</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="./static/layui/layui.js"></script>
+<script th:inline="javascript">
+    layui.use(['jquery', 'form'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+
+        var sex = [[${sex}]];
+        //正则表达式
+        var email = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+        var phone = new RegExp("^[1][3,4,5,7,8][0-9]{9}$");
+
+        if (sex == '男') {
+            $('.boy').attr("checked", "checked");
+            form.render();
+        }
+
+        $('#cancel').on('click', function () {
+            parent.layer.close(parent.layer.index);
+        });
+
+        var isOne = true;
+
+        //提交数据
+        form.on('submit(formDemo)', function (data) {
+            if (!email.test(data.field.userEmail)) {
+                layer.msg("邮箱格式不对");
+                return false;
+            } else if (!phone.test(data.field.userPhone)) {
+                layer.msg("手机号码格式不对");
+                return false;
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    async: true,
+                    url: 'userUpdate.do',
+                    contentType: "application/json",
+                    data: JSON.stringify(data.field),
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.code > 0) {
+                            parent.layer.close(parent.layer.index);
+                            parent.layer.msg(res.msg);
+                        }else {
+                            layer.open({
+                                title: 'error',
+                                content: res.msg,
+                                btn: 'ok',
+                                btnAlign: 'c',
+                                btn1: function (index, layer0) {
+                                    layer.close(index);
+                                }
+                            });
+                            isOne = true;
+                        }
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

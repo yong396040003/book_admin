@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加/编辑nav</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+</head>
+<body>
+<!--添加/编辑nav-->
+<div id="addBook" style="margin-top: 5px">
+    <form class="layui-form form" action="">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="id" readonly="readonly"
+                           class="layui-input id" value="0">
+                </div>
+                <div class="layui-form-mid layui-word-aux">唯一标识</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">nav名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入nav名"
+                           autocomplete="off"
+                           class="layui-input title">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">图标</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="icon" required lay-verify="required" placeholder="请输入icon" value="null"
+                           autocomplete="off"
+                           class="layui-input icon">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">href</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="href" required lay-verify="required" placeholder="请输入href" value="null"
+                           autocomplete="off"
+                           class="layui-input href">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">是否展开</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="spread" required lay-verify="required" placeholder="是否展开" value="false"
+                           autocomplete="off"
+                           class="layui-input spread">
+                </div>
+                <div class="layui-form-mid layui-word-aux">默认false</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">父nav</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="pid" required lay-verify="required" placeholder="请输入nav父节点"
+                           autocomplete="off"
+                           class="layui-input pid">
+                </div>
+                <div class="layui-form-mid layui-word-aux">默认0</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">数据库表</label>
+                <div class="layui-input-inline">
+                    <select name="category" class="category">
+                        <option value="请选择">请选择</option>
+                        <option selected="selected">content_management</option>
+                        <option>user_center</option>
+                        <option>system_setting</option>
+                        <option>seraph_api</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <button id="submit" class="layui-btn submit" lay-submit="true" lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+            <button id="cancel" class="layui-btn layui-btn-primary">取消</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="./static/layui/layui.js"></script>
+<script>
+    layui.use(["form", "jquery"], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+
+        var isOne = true;
+        //提交数据
+        form.on('submit(formDemo)', function (data) {
+            if (isOne) {
+                isOne = false;
+                $.ajax({
+                    type: 'POST',
+                    async: true,
+                    url: 'insertNav.do',
+                    contentType: "application/json",
+                    data: JSON.stringify(data.field),
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.code > 0) {
+                            parent.layer.close(parent.layer.index);
+                            parent.layer.msg(res.msg);
+                        } else {
+                            layer.open({
+                                title: '数据插入失败',
+                                content: res.msg,
+                                btn: 'ok',
+                                btnAlign: 'c',
+                                btn1: function (index, layer0) {
+                                    layer.close(index);
+                                }
+                            });
+                            isOne = true;
+                        }
+                    }
+                })
+            } else {
+                layer.msg("请不要重复提交");
+            }
+
+            return false;
+        });
+
+        $('#cancel').on('click', function () {
+            parent.layer.close(parent.layer.index);
+        });
+    })
+</script>
+</body>
+</html>
