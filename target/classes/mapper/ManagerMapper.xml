@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yong.book.mapper.ManagerMapper">
+	<sql id="BASE_TABLE">
+		manager
+	</sql>
+	<sql id="BASE_COLUMN">
+		`username`,`password`
+	</sql>
+	
+	<!--根据name,paw判断是否有该用户-->
+	<select id="getAll" resultType="cn.yong.book.pojo.Manager">
+		SELECT `id`,`username`,`icon`
+		FROM
+		<include refid="BASE_TABLE" />
+	</select>
+
+
+</mapper>

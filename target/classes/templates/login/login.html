@@ -1,0 +1,62 @@
+<!doctype html>
+<!--压制所有，只是压制thymeleaf警告，非强迫症建议不去-->
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>后端登录</title>
+    <link rel="stylesheet" href="./static/layui/css/layui.css">
+    <link rel="stylesheet" href="./static/login/css/login.css">
+    <script src="./static/layui/layui.js"></script>
+</head>
+<body>
+<!-- icon -->
+<div class="w">
+    <div id="logo">
+        <img src="./static/images/bookroom.png" alt="一本好书，一生之书。">
+    </div>
+    <div id="text">
+        <p>一本好书，一生之书。</p>
+    </div>
+</div>
+<!-- 登陆界面 -->
+<div class="pageContext">
+    <div class="login">
+        <span><h1>管理员登录</h1></span>
+        <span><p class="error" th:text="${error}"></p></span>
+        <form action="login.do" method="post">
+            <div class="username">
+                <i class="layui-icon layui-icon-username"></i>
+            </div>
+            <input name="username" class="usr" tabindex="1" type="text" autocomplete="off" placeholder="手机号码">
+            <div class="password">
+                <i class="layui-icon layui-icon-password"></i>
+            </div>
+            <input name="password" class="paw" tabindex="2" type="password" autocomplete="off" placeholder="密码">
+            <span id="forget">
+                    <a href="#">忘了密码</a>
+                </span>
+            <input id="button" class="layui-btn layui-btn-normal" type="submit" value="登陆">
+        </form>
+        <div id="reg" class="register">
+            <a style="color: red;" href="">立即注册?</a>
+        </div>
+    </div>
+</div>
+
+<!--页面底部版本信息-->
+<div id="footer">
+    CopyRight © 2018 yong Systems Incorporated. All rights reserved.
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

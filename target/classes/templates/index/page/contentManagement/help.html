@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帮助</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<div style="margin-top: 5%;margin-left: 10%;width: 80%;text-align: center">
+    <img style="width: 300px;height: 300px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563800511724&di=6fb02cf1f4daa558238eb52f80a32e22&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201205%2F14%2F20120514224144_MMySf.jpeg" alt="图片加载异常">
+    <br><br>
+    <button id="bai" class="layui-btn layui-btn-normal">拜一拜，答案自现</button>
+</div>
+
+<script src="static/layui/layui.js"></script>
+<script>
+    layui.use('jquery',function () {
+       var $ = layui.jquery;
+
+       $('#bai').on('click',function () {
+           window.open("https://www.baidu.com/");
+       });
+    });
+</script>
+</body>
+
+</html>

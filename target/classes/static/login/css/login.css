@@ -1,0 +1,241 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+input::-webkit-search-cancel-button {
+    display: none;
+}
+
+input[type=search]::-ms-clear {
+    display: none;
+}
+
+.w {
+    position: relative;
+    width: 990px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.w #logo {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 80px;
+    bottom: 0;
+}
+
+.w #logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.w #text {
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    bottom: 0;
+    left: 80px;
+}
+
+.w #text p {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #e47214;
+}
+
+.login h1 {
+    text-align: center;
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pageContext .login .error{
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    text-align: center;
+}
+
+#footer {
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    bottom: 0;
+    width: 100%;
+    background: #f0f0f0;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+/*登陆框响应式设局*/
+/*电脑屏幕*/
+@media screen and (min-width: 1081px ) {
+
+    .pageContext {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        margin: 0 auto;
+        background: url("../../images/bg.jpg") no-repeat;
+    }
+
+    .pageContext .login {
+        height: 360px;
+        width: 400px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 4px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -180px 0 0 20px;
+        z-index: 99;
+    }
+
+    .pageContext .login .username {
+        position: absolute;
+        margin-left: 60px;
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .pageContext .login .username i {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .pageContext .login .usr:focus {
+        border: 1px solid blue;
+    }
+
+    .pageContext .login .password {
+        position: absolute;
+        margin-left: 60px;
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .pageContext .login .password i {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .pageContext .login .paw:focus {
+        border: 0.5px solid blue;
+    }
+
+    .pageContext .login input {
+        display: block;
+        width: 260px;
+        height: 40px;
+        margin: 25px auto;
+        padding-left: 40px;
+        border: 0.5px solid #696060;
+    }
+
+    #forget, #reg {
+        margin-left: 295px;
+    }
+
+    #button {
+        border: 0;
+        width: 300px;
+    }
+}
+
+/*手机屏幕*/
+@media screen and (max-width: 1080px ) {
+    body {
+        width: 100%;
+        min-height: 100%;
+        background: #00AAEE;
+    }
+
+    .w {
+        display: none;
+    }
+
+    .pageContext {
+        position: absolute;
+        width: 100%;
+    }
+
+    .pageContext .login {
+        height: 360px;
+        width: 80%;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 4px;
+        position: relative;
+        margin: auto;
+        margin-top: 80px;
+        z-index: 99;
+    }
+
+    .pageContext .login .username {
+        position: absolute;
+        margin-left: 20px;
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .pageContext .login .username i {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .pageContext .login .usr:focus {
+        border: 1px solid blue;
+    }
+
+    .pageContext .login .password {
+        position: absolute;
+        margin-left: 20px;
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .pageContext .login .password i {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .pageContext .login .paw:focus {
+        border: 0.5px solid blue;
+    }
+
+    .pageContext .login input {
+        display: block;
+        width: 80%;
+        height: 40px;
+        margin: 25px auto;
+        padding-left: 40px;
+        border: 0.5px solid #696060;
+    }
+
+    #button {
+        border: 0;
+        width: 96%;
+        margin: auto;
+    }
+
+    #forget,#reg{
+        line-height: 10px;
+        margin-left: 70%;
+        margin-top: 10px;
+    }
+
+    .login h1{
+        margin-bottom: 10px;
+    }
+}

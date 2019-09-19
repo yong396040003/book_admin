@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./static/layui/css/layui.css">
+    <title>管理员</title>
+</head>
+<body>
+
+<table class="layui-table" lay-data="{height: 'full-200', cellMinWidth: 80, page: true, limit:30, url:'manager.do'}">
+    <thead>
+    <tr>
+        <th lay-data="{type:'checkbox'}">ID</th>
+        <th lay-data="{field:'id', width:100}">ID</th>
+        <th lay-data="{field:'username', width:100}">管理员</th>
+        <th lay-data="{field:'icon', width:100}">图标</th>
+    </tr>
+    </thead>
+</table>
+
+
+<script src="./static/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+
+    });
+</script>
+
+</body>
+
+</html>

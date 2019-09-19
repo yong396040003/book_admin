@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <style>
+        .content1, .content2 {
+            width: 80%;
+            height: 380px;
+            margin: 30px auto auto auto;
+            padding: 20px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px #f0f0f0;
+        }
+
+        .msg {
+            width: 100%;
+            height: 10%;
+            border: 1px solid #b2e2ea;
+            background-color: #e5f2f8;
+        }
+
+        .msg span {
+            line-height: 40px;
+            padding-left: 40px;
+        }
+
+        .input {
+            width: 100%;
+            height: 90%;
+            overflow: hidden;
+        }
+
+        .layui-block {
+            margin-left: 170px;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #0AE;
+        }
+
+        a:hover {
+            color: #0AE;
+            text-decoration: none;
+            border-bottom: 1px solid #0AE;
+        }
+
+        button {
+            width: 180px;
+            margin-left: 280px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body style="padding-top: 10px">
+
+<div class="content1">
+    <div class="msg">
+        <span>为确保你的账户安全，需验证管理员手机账号，并验证手机短信验证码。</span>
+    </div>
+
+    <div class="input">
+        <div class="layui-block inputPhone">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-inline">
+                <span class="layui-input" id="num" style="height: 38px;border: 0;line-height: 38px"></span>
+            </div>
+        </div>
+        <div class="layui-block inputCode">
+            <label class="layui-form-label">校验码</label>
+            <div class="layui-input-inline">
+                <input type="number" required lay-verify="required" placeholder="请勿泄露"
+                       autocomplete="off"
+                       class="layui-input code">
+            </div>
+            <a href="#" class="sendCode">没有收到校验码？</a>
+            <div style="padding-left: 110px;color: #B2B2B2">校验码是6位数字，30分钟内输入有效，请勿泄露</div>
+        </div>
+        <button id="next" class="layui-btn layui-btn-normal">下一步</button>
+    </div>
+</div>
+
+<div style="display: none" class="content2">
+    <div class="msg">
+        <span>为确保你的账户安全，需验证管理员手机账号，并验证手机短信验证码。</span>
+    </div>
+
+    <div class="input">
+        <div class="layui-block inputPhone">
+            <label class="layui-form-label">旧密码</label>
+            <div class="layui-input-inline">
+                <input type="text" required lay-verify="required" placeholder="请输入旧密码"
+                       autocomplete="off"
+                       class="layui-input phoneNumber">
+            </div>
+        </div>
+        <div class="layui-block inputCode">
+            <label class="layui-form-label">新密码</label>
+            <div class="layui-input-inline">
+                <input type="text" required lay-verify="required" placeholder="请输入新密码"
+                       autocomplete="off"
+                       class="layui-input phoneNumber">
+            </div>
+        </div>
+        <div class="layui-block inputCode">
+            <label class="layui-form-label">确认新密码</label>
+            <div class="layui-input-inline">
+                <input type="text" required lay-verify="required" placeholder="请再次输入新密码"
+                       autocomplete="off"
+                       class="layui-input phoneNumber">
+            </div>
+        </div>
+        <button class="layui-btn layui-btn-normal">立即提交</button>
+    </div>
+</div>
+
+<script type="text/javascript" src="static/layui/layui.js"></script>
+<script>
+    layui.use(['jquery', 'layer'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var phone = new RegExp("^[1][3,4,5,7,8][0-9]{9}$");
+
+        var num = '无';
+
+        layer.open({
+            type: 1,
+            title: '验证',
+            content: "        <div class=\"inputPhone\">\n" +
+            "            <label class=\"layui-form-label\">手机号码</label>\n" +
+            "            <div class=\"layui-input-inline\" style='padding-right: 20px'>\n" +
+            "                <input type=\"number\" required lay-verify=\"required\" placeholder=\"请输入手机号码\"\n" +
+            "                       autocomplete=\"off\"\n" +
+            "                       class=\"layui-input phoneNumber\">\n" +
+            "            </div>\n" +
+            "        </div>",
+            closeBtn: 0,
+            btn: '验证',
+            btnAlign: 'c',
+            btn1: function (index, layer0) {
+                var phoneNum = $(layer0).find('.phoneNumber').val();
+                if (!phone.test(phoneNum)) {
+                    layer.msg("手机号码格式不对");
+                    return false;
+                } else if (phoneNum != null) {
+                    $.ajax({
+                        type: 'POST',
+                        async: true,
+                        url: 'isManager.do',
+                        data: "phoneNum=" + phoneNum,
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.code === 0) {
+                                var a = phoneNum.substring(0, 3);
+                                var c = phoneNum.substring(7, 11);
+                                num = a + "xxxx" + c;
+                                layer.close(index);
+                                layer.msg(res.msg);
+                                $('#num')[0].innerHTML = num;
+                            } else {
+                                layer.msg(res.msg);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        $('#next').on('click', function () {
+            $.ajax({
+                type: 'Post',
+                url: 'isManagerCode.do',
+                data: 'code=' + $('.code').val(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code === 0) {
+                        $('.content1').hide();
+                        $('.content2').show();
+                        layer.msg(res.msg);
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

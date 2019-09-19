@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完本小说</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+</head>
+<style>
+    .layui-layer{
+        margin-top: 10px !important;
+        border: 0 !important;
+    }
+</style>
+<body>
+
+<!--table表格-->
+<table class="layui-table" lay-size="sm" id="book" lay-filter="Book"></table>
+
+<script id="toolbar" type="text/html">
+    <!--搜索book-->
+    <div class="searchBook" style="display: inline-block">
+        <input id="search_input" type="text" name="title" required lay-verify="required" placeholder="书号/书名/作者"
+               autocomplete="off"
+               class="layui-input" style="width: 180px;display: inline-block">
+        <button id="search" lay-event="search" style="display: inline-block" class="layui-btn layui-btn-normal">搜索</button>
+    </div>
+
+    <div class="layui-btn-container" style="display: inline-block">
+        <button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon">&#xe654;</i>添加</button>
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="batchAdd"><i class="layui-icon">&#xe654;</i>批量导入</button>
+        <button id="batchExport" class="layui-btn layui-btn-sm layui-btn-normal" lay-event="batchExport"><i class="iconfont icon-daochu">  </i>批量导出</button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchDel"><i class="layui-icon">&#xe640;</i>批量删除</button>
+        <button class="layui-btn layui-btn-sm" lay-event="refresh"><i class="layui-icon layui-icon-refresh"></i>刷新</button>
+    </div>
+</script>
+
+<script id="bar" type="text/html">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="preview">预览</a>
+</script>
+
+<script src="static/layui/layui.js"></script>
+<script src="static/contentManagement/js/book.js"></script>
+<script>
+    getParam("selectBook.do","post",'all','totalHits','完本');
+</script>
+</body>
+</html>

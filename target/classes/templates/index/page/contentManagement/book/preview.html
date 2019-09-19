@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--压制所有，只是压制thymeleaf警告，非强迫症建议不去-->
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书预览</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="static/contentManagement/css/preview.css" media="all">
+</head>
+<body>
+<!--图书详情-->
+<div class="detailed">
+    <div class="detailed_left">
+        <img class="img" alt="error">
+    </div>
+    <div class="detailed_right">
+        <h1 class="name">书名</h1>
+        <table class="detail-profile">
+            <tbody>
+            <tr>
+                <td><strong>作者：</strong><span class="author">白马出淤泥</span></td>
+                <td><strong>类型：</strong><span class="category">武侠修仙</span></td>
+            </tr>
+            <tr>
+                <td><strong>状态：</strong><span class="status">连载中</span></td>
+                <td><strong>收藏：</strong><span class="collection">0</span></td>
+            </tr>
+            <tr>
+                <td><strong>字数：</strong><span class="wordNumber">100</span></td>
+                <td><strong>更新时间：</strong><span class="data">2019-6-1 24：00：0</span></td>
+            </tr>
+            <tr>
+                <td><strong>总点击：</strong><span class="totalHits">100</span></td>
+                <td><strong>月点击：</strong><span class="monthlyClicks">100</span></td>
+                <td><strong>周点击：</strong><span class="weeklyClicks">100</span></td>
+            </tr>
+            <tr>
+                <td><strong>总推荐：</strong><span class="totalRecommendedNumber">100</span></td>
+                <td><strong>月推荐：</strong><span class="monthlyRecommendedNumber">100</span></td>
+                <td><strong>周推荐：</strong><span class="weekRecommendedNumber">100</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="synopsis">
+        </p>
+    </div>
+    <div class="bottom">
+        <button class="layui-btn layui-btn-normal layui-btn-lg startRead">开始阅读</button>
+        <button class="layui-btn layui-btn-primary layui-btn-lg collect">收藏本书</button>
+    </div>
+</div>
+
+<!--图书目录-->
+<div id="catalog" class="catalog">
+    <div class="content">
+        <h1>目录</h1>
+        <div class="content-list-wrap">
+            <ol class="contents-lst contents-lst-left"></ol>
+            <ol class="contents-lst contents-lst-right"></ol>
+        </div>
+        <div style="clear: both"></div>
+        <div id="page" class="page"></div>
+    </div>
+</div>
+
+<script src="static/layui/layui.js"></script>
+<script src="static/contentManagement/js/preview.js"></script>
+<script th:inline="javascript">
+var number = [[${number}]];
+    getNumber(number);
+</script>
+</body>
+</html>
