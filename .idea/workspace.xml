@@ -9,59 +9,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85490a5-67b8-4c86-ab6d-d544d7c9232d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/yong/book/juntil/DruidUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/book_admin_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/book_admin_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/yong/book/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/yong/book/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/yong/book/juntil/JavaPy1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/yong/book/juntil/JavaPy1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/controller/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1$InsertBookThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1$InsertBookThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1$InsertCatalogueThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1$InsertCatalogueThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/juntil/JavaPy1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BookMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/css/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/css/iconfont.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/css/public.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/js/bodyTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/js/bodyTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/js/cache.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/js/cache.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/js/cacheManagerInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/js/cacheManagerInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index/manager/managerInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index/manager/managerInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/layui.mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/layui.mobile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/modules/code.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/modules/laydate/default/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/modules/layer/default/layer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/font/iconfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/carousel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/colorpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/colorpicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/element.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/flow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laydate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layedit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laypage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laytpl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/rate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/rate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/slider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/transfer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/layui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index/page/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index/page/404.html" afterDir="false" />
-    </list>
+    <list default="true" id="a85490a5-67b8-4c86-ab6d-d544d7c9232d" name="Default" comment="更新1.0" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -97,8 +45,8 @@
       <file leaf-file-name="JavaPy1.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/yong/book/juntil/JavaPy1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="224" column="40" selection-start-line="224" selection-start-column="40" selection-end-line="224" selection-end-column="40" />
+            <state relative-caret-position="132">
+              <caret line="219" column="26" lean-forward="true" selection-start-line="219" selection-start-column="26" selection-end-line="219" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -515,7 +463,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -912,12 +860,20 @@
       <workItem from="1571154666872" duration="825000" />
       <workItem from="1571378275510" duration="1793000" />
       <workItem from="1571411711222" duration="1899000" />
-      <workItem from="1571632930403" duration="504000" />
+      <workItem from="1571632930403" duration="785000" />
     </task>
+    <task id="LOCAL-00001" summary="更新1.0">
+      <created>1571633596223</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571633596223</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="477145000" />
+    <option name="totallyTimeSpent" value="477426000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -933,7 +889,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" weight="0.32838285" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" weight="0.32713178" />
       <window_info anchor="bottom" id="Application Servers" order="8" weight="0.32838285" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.25113463" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -954,7 +910,7 @@
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32838285" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32838285" />
       <window_info id="Persistence" order="2" sideWeight="0.50165015" side_tool="true" weight="0.31996974" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.27609682" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.27609682" />
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="right" id="Bean Validation" order="3" weight="0.32980332" />
       <window_info id="Web" order="2" side_tool="true" />
@@ -1013,7 +969,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="更新1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1333,8 +1290,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/yong/book/juntil/JavaPy1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="224" column="40" selection-start-line="224" selection-start-column="40" selection-end-line="224" selection-end-column="40" />
+        <state relative-caret-position="132">
+          <caret line="219" column="26" lean-forward="true" selection-start-line="219" selection-start-column="26" selection-end-line="219" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
