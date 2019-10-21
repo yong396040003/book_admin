@@ -4,10 +4,16 @@ import cn.yong.book.juntil.JavaPy;
 import cn.yong.book.pojo.Book;
 import cn.yong.book.service.BookService;
 import com.alibaba.fastjson.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,6 +29,10 @@ import java.util.List;
  */
 @Controller
 public class BookController {
+    /**
+     * 日志文件
+     */
+    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
     private final static String CONTENTS = "<dd id=\"contents\">+.+?</dd>";
     @Autowired
     private BookService BookService;
@@ -67,12 +77,22 @@ public class BookController {
     @RequestMapping(value = "/selectBookBody.do", method = RequestMethod.POST)
     @ResponseBody
     public String selectBookBody(String url) {
-        String body = JavaPy.senGet(url);
-        List<String> list = JavaPy.RegexString(body, CONTENTS);
-        list.set(0, list.get(0).replaceAll("<dd", "<span"));
-        list.set(0, list.get(0).replaceAll("<br /><br />", "<br />"));
-        list.set(0, list.get(0).replaceAll("</dd>", "</span>"));
-        return list.get(0);
+
+        Document document = null;
+        try {
+            document = Jsoup.connect(url)
+                    .userAgent("Mozilla")
+                    .cookie("auth", "token")
+                    .timeout(10000)
+                    .get();
+        } catch (IOException e) {
+            logger.error("网页连接失败" + e.getMessage());
+            e.printStackTrace();
+        }
+        assert document != null;
+        Element element = document.body();
+        Element elementById = element.getElementById("contents");
+        return elementById.html();
     }
 
     /**

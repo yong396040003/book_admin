@@ -3,6 +3,7 @@ package cn.yong.book.juntil;
 import cn.yong.book.pojo.Book;
 import cn.yong.book.pojo.Catalogue;
 import org.jsoup.Jsoup;
+import org.jsoup.helper.HttpConnection;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -14,10 +15,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.sql.*;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -171,27 +169,26 @@ public class JavaPy1 {
      */
     public static List<Book> getBook(int start, int end) {
         //设置一个列表来接收匹配到的数据
-        List<String> list = null;
+        List<String> list = new ArrayList<>();
+        int j;
         //存储book信息
         List<Book> books = new ArrayList<>();
-        //定义即将访问的链接
-        String url = "https://www.23us.so/xiaoshuo/00";
         logger.info("start-----------------------------");
         for (int i = start; i <= end; i++) {
             logger.info("开始抓取第" + i + "本书籍信息");
-            //重新定义发送地址
-            String url1 = url + i + ".html";
             Document document = null;
             try {
-                document = Jsoup.connect(url1)
-                        .data("query", "Java")
+                j = i + 999;
+                document = Jsoup.connect("https://www.x23us.com/book/" + j)
                         .userAgent("Mozilla")
                         .cookie("auth", "token")
-                        .timeout(3000)
+                        .timeout(10000)
                         .get();
             } catch (IOException e) {
                 logger.error("网页连接失败" + e.getMessage());
                 e.printStackTrace();
+                books.add(null);
+                continue;
             }
             assert document != null;
             Element element = document.body();
@@ -202,46 +199,112 @@ public class JavaPy1 {
             Elements elements = elementById.select("div.fl");
             Elements img = elements.get(0).select("img");
             String imgUrl = img.attr("src");
+            imgUrl = "https://www.x23us.com" + imgUrl;
             //书籍后面所有信息
             Elements bookList = elements.get(1).select("td");
-            list = new ArrayList<>();
             for (Element book : bookList) {
                 list.add(book.text().replaceAll(" ", ""));
             }
             //简介
-            Element synopsis = elementById.select("dd").last();
+            Element synopsis = elementById.select("dd").get(3);
             Element synopsis1 = synopsis.select("p").get(1);
             //初始化一本书
             Book book = new Book();
-            bookId++;
-            book.setId(bookId);
             //设置书号
-            book.setNumber(i);
+            book.setNumber(j);
             book.setName(bookName.text().replaceAll(" 全文阅读", ""));
             //小说类型
-            book.setCategory(list.get(0));
+            switch (list.get(0)) {
+                case "武侠修真":
+                    book.setCategory("武侠仙侠");
+                    break;
+                case "侦探推理":
+                    book.setCategory("恐怖灵异");
+                    break;
+                case "网游小说":
+                    book.setCategory("网游竞技");
+                    break;
+                case "散文诗词":
+                    book.setCategory("女生小说");
+                    break;
+                case "其他类型":
+                    book.setCategory("其他小说");
+                default:
+                    book.setCategory(list.get(0));
+                    break;
+            }
             //作者
             book.setAuthor(list.get(1));
             //状态
-            book.setStatus(list.get(2));
+            switch (list.get(2)) {
+                case "已完成":
+                    book.setStatus("完本");
+                    break;
+                default:
+                    book.setStatus(list.get(2));
+                    break;
+            }
+
             //收藏
-            book.setCollection(Integer.parseInt(list.get(3)));
+            if (list.get(3).length() > 8) {
+                String collection = list.get(3).substring(list.get(3).length() - 8);
+                System.err.println(collection);
+                book.setCollection(Integer.parseInt(collection));
+            } else {
+                book.setCollection(Integer.parseInt(list.get(3)));
+            }
             //字数
             book.setWordNumber(list.get(4));
             //更新时间
             book.setData(list.get(5));
             //总点击数
-            book.setTotalHits(Integer.parseInt(list.get(6)));
+            if (list.get(6).length() > 8) {
+                String wordNumber = list.get(6).substring(list.get(3).length() - 8);
+                System.err.println(wordNumber);
+                book.setTotalHits(Integer.parseInt(wordNumber));
+            } else {
+                book.setTotalHits(Integer.parseInt(list.get(6)));
+            }
             //月点击数
-            book.setMonthlyClicks(Integer.parseInt(list.get(7)));
+            if (list.get(7).length() > 8) {
+                String wordNumber = list.get(7).substring(list.get(3).length() - 8);
+                System.err.println(wordNumber);
+                book.setMonthlyClicks(Integer.parseInt(wordNumber));
+            } else {
+                book.setMonthlyClicks(Integer.parseInt(list.get(7)));
+            }
             //周点击数
-            book.setWeeklyClicks(Integer.parseInt(list.get(8)));
+            if (list.get(8).length() > 8) {
+                String wordNumber = list.get(8).substring(list.get(3).length() - 8);
+                System.err.println(wordNumber);
+                book.setWeeklyClicks(Integer.parseInt(wordNumber));
+            } else {
+                book.setWeeklyClicks(Integer.parseInt(list.get(8)));
+            }
             //总推荐数
-            book.setTotalRecommendedNumber(Integer.parseInt(list.get(9)));
+            if (list.get(9).length() > 8) {
+                String wordNumber = list.get(8).substring(list.get(3).length() - 8);
+                System.err.println(wordNumber);
+                book.setTotalRecommendedNumber(Integer.parseInt(wordNumber));
+            } else {
+                book.setTotalRecommendedNumber(Integer.parseInt(list.get(9)));
+            }
             //月推荐数
-            book.setMonthlyRecommendedNumber(Integer.parseInt(list.get(10)));
+            if (list.get(10).length() > 8) {
+                String wordNumber = list.get(10).substring(list.get(3).length() - 8);
+                System.err.println(wordNumber);
+                book.setMonthlyRecommendedNumber(Integer.parseInt(wordNumber));
+            } else {
+                book.setMonthlyRecommendedNumber(Integer.parseInt(list.get(10)));
+            }
             //周推荐书
-            book.setWeekRecommendedNumber(Integer.parseInt(list.get(11)));
+            if (list.get(11).length() > 8) {
+                String wordNumber = list.get(11).substring(list.get(3).length() - 8);
+                System.err.println(wordNumber);
+                book.setWeekRecommendedNumber(Integer.parseInt(wordNumber));
+            } else {
+                book.setWeekRecommendedNumber(Integer.parseInt(list.get(11)));
+            }
             //设置图片地址
             book.setImg(imgUrl);
             //设置简介
@@ -289,6 +352,8 @@ public class JavaPy1 {
      */
     public static List<Catalogue> getPathMulu(int start, int end) {
         logger.info("start-------------------------------------");
+        String URL = null;
+        int j;
         //创建图书目录列表
         List<Catalogue> catalogues = new ArrayList<>();
         for (int i = start; i <= end; i++) {
@@ -296,15 +361,18 @@ public class JavaPy1 {
             //访问页面并获取页面内容
             Document document = null;
             try {
-                document = Jsoup.connect("https://www.23us.so/files/article/html/1/" + i + "/index.html")
-                        .data("query", "Java")
+                j = 999 + i;
+                URL = "https://www.x23us.com/html/" + j / 1000 + "/" + j + "/";
+                document = Jsoup.connect(URL)
                         .userAgent("Mozilla")
                         .cookie("auth", "token")
-                        .timeout(3000)
+                        .timeout(10000)
                         .get();
             } catch (IOException e) {
                 logger.error("网页连接失败" + e.getMessage());
                 e.printStackTrace();
+                catalogues.add(null);
+                continue;
             }
             assert document != null;
             Element element = document.body();
@@ -315,16 +383,18 @@ public class JavaPy1 {
             for (Element element2 : elements) {
                 //章节地址
                 String url = element2.select("a[href]").attr("href");
+                url = URL + url;
                 //章节名
                 String name = element2.text();
+                if (" ".equals(name)) {
+                    break;
+                }
                 //创建一个图书目录
                 Catalogue catalogue = new Catalogue();
-                //设置id
-                catalogueId++;
                 //设置章节名
                 catalogue.setName(name);
                 //设置书号
-                catalogue.setNumber(i);
+                catalogue.setNumber(j);
                 //设置索引
                 catalogue.setCount(count);
                 //设置url
@@ -332,7 +402,6 @@ public class JavaPy1 {
                 count++;
                 catalogues.add(catalogue);
             }
-            logger.error(catalogues.toString());
             logger.info("抓取成功，正在把" + elements.size() + "章章节保存到文件");
         }
         logger.info("end-------------------------------------");
@@ -340,26 +409,26 @@ public class JavaPy1 {
     }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("你的起始位置:");
+        start = scanner.nextInt();
+        end = start + 50;
+        System.out.println("你的间距为:" + end);
+        System.out.println("目标:" + start + " 到 " + 100000);
+
         Timer timer = new Timer();
 
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                bookId = 0;
-                catalogueId = 0;
-                String className = "com.mysql.jdbc.Driver";
-                String url = "jdbc:mysql://localhost:3306/bam?rewriteBatchedStatements=true&useSSL=false";
-                String user = "root";
-                String password = "yong12345";
                 connection = null;
                 try {
-                    Class.forName(className);
                     //获得一个Connection对象
-                    connection = DriverManager.getConnection(url, user, password);
+                    connection = DruidUtil.getConnection();
                     saveBookToSql();
-                    connection.close();
+                    DruidUtil.close(connection);
                 } catch (Exception e) {
-                    logger.error("数据库驱动加载失败：" + e.getMessage());
+                    e.printStackTrace();
                 }
             }
         };
@@ -371,32 +440,18 @@ public class JavaPy1 {
      * 把书籍和目录信息保存到数据库中
      */
     public static void saveBookToSql() {
-        ExecutorService service = newFixedThreadPool(2);
         while (true) {
-            InsertBookThread bookThread = new InsertBookThread();
-            InsertCatalogueThread catalogueThread = new InsertCatalogueThread();
-            if (end > 49050) {
-                try {
-                    bookThread.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    logger.info("书籍" + e.getMessage());
-                }
-            }
-            if (end1 > 49050) {
-                try {
-                    catalogueThread.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    logger.info("目录" + e.getMessage());
-                }
-            }
-            service.execute(bookThread);
-            service.execute(catalogueThread);
-            if (end > 49050 && end1 > 49050) {
-                if (service.isShutdown()) {
-                    service.shutdown();
-                }
+            //book数据
+            List<Book> books = getBook(start, end);
+            //目录数据
+            List<Catalogue> catalogues = getPathMulu(start, end);
+            //插入book数据
+            insertBook(books, connection);
+            //插入目录信息
+            insertCatalogue(catalogues, connection);
+            start += 50;
+            end += 50;
+            if (start >= 100000) {
                 break;
             }
         }
@@ -411,29 +466,31 @@ public class JavaPy1 {
     public static void insertBook(List<Book> books, Connection connection) {
         try {
             //插入book数据
-            String insertBookSql = "REPLACE INTO book(`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis`)" +
-                    "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String insertBookSql = "REPLACE INTO book(`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,`weekRecommendedNumber`,`img`,`synopsis`)" +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             //手动提交
             connection.setAutoCommit(false);
             PreparedStatement pst1 = connection.prepareStatement(insertBookSql);
             for (Book book : books) {
-                pst1.setInt(1, book.getId());
-                pst1.setInt(2, book.getNumber());
-                pst1.setString(3, book.getCategory());
-                pst1.setString(4, book.getName());
-                pst1.setString(5, book.getAuthor());
-                pst1.setString(6, book.getStatus());
-                pst1.setInt(7, book.getCollection());
-                pst1.setString(8, book.getWordNumber());
-                pst1.setString(9, book.getData());
-                pst1.setInt(10, book.getTotalHits());
-                pst1.setInt(11, book.getMonthlyClicks());
-                pst1.setInt(12, book.getWeeklyClicks());
-                pst1.setInt(13, book.getTotalRecommendedNumber());
-                pst1.setInt(14, book.getMonthlyRecommendedNumber());
-                pst1.setInt(15, book.getWeekRecommendedNumber());
-                pst1.setString(16, book.getImg());
-                pst1.setString(17, book.getSynopsis());
+                if (book == null) {
+                    continue;
+                }
+                pst1.setInt(1, book.getNumber());
+                pst1.setString(2, book.getCategory());
+                pst1.setString(3, book.getName());
+                pst1.setString(4, book.getAuthor());
+                pst1.setString(5, book.getStatus());
+                pst1.setInt(6, book.getCollection());
+                pst1.setString(7, book.getWordNumber());
+                pst1.setString(8, book.getData());
+                pst1.setInt(9, book.getTotalHits());
+                pst1.setInt(10, book.getMonthlyClicks());
+                pst1.setInt(11, book.getWeeklyClicks());
+                pst1.setInt(12, book.getTotalRecommendedNumber());
+                pst1.setInt(13, book.getMonthlyRecommendedNumber());
+                pst1.setInt(14, book.getWeekRecommendedNumber());
+                pst1.setString(15, book.getImg());
+                pst1.setString(16, book.getSynopsis());
                 pst1.addBatch();
             }
             pst1.executeBatch();
@@ -455,16 +512,18 @@ public class JavaPy1 {
     public static void insertCatalogue(List<Catalogue> catalogues, Connection connection) {
         //插入catalogue数据
         try {
-            String insertCatalogueSql = "REPLACE INTO catalogue(`id`,`number`,`name`,`count`,`url`) VALUES(?,?,?,?,?)";
+            String insertCatalogueSql = "REPLACE INTO catalogue(`number`,`name`,`count`,`url`) VALUES(?,?,?,?)";
             PreparedStatement pst2 = connection.prepareStatement(insertCatalogueSql);
             //设置提交方式为手动提交
             connection.setAutoCommit(false);
             for (Catalogue catalogue : catalogues) {
-                pst2.setInt(1, catalogue.getId());
-                pst2.setInt(2, catalogue.getNumber());
-                pst2.setString(3, catalogue.getName());
-                pst2.setInt(4, catalogue.getCount());
-                pst2.setString(5, catalogue.getUrl());
+                if (catalogue == null) {
+                    continue;
+                }
+                pst2.setInt(1, catalogue.getNumber());
+                pst2.setString(2, catalogue.getName());
+                pst2.setInt(3, catalogue.getCount());
+                pst2.setString(4, catalogue.getUrl());
                 pst2.addBatch();
             }
             pst2.executeBatch();

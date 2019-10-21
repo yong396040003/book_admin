@@ -56,10 +56,10 @@ WHERE author LIKE "%${author}%" OR `name` LIKE "%${name}%"  OR `number` = "${nam
 	</select>
 	
 	<insert id="insertBook">
-		insert into `book` (`id`,`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,
+		insert into `book` (`number`,`category`,`name`,`author`,`status`,`collection`,`wordNumber`,`data`,
 		`totalHits`,`monthlyClicks`,`weeklyClicks`,`totalRecommendedNumber`,`monthlyRecommendedNumber`,
 		`weekRecommendedNumber`,`img`,`synopsis`)
-		values (${book.id},"${book.number}","${book.category}","${book.name}","${book.author}","${book.status}","${book.collection}","${book.wordNumber}","${book.data}","${book.totalHits}","${book.monthlyClicks}",
+		values ("${book.number}","${book.category}","${book.name}","${book.author}","${book.status}","${book.collection}","${book.wordNumber}","${book.data}","${book.totalHits}","${book.monthlyClicks}",
 		"${book.weeklyClicks}","${book.totalRecommendedNumber}","${book.monthlyRecommendedNumber}","${book.weekRecommendedNumber}",
 		"${book.img}","${book.synopsis}")
 	</insert>
