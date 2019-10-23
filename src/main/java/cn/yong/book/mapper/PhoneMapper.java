@@ -56,7 +56,7 @@ public interface PhoneMapper {
      *
      * @return
      */
-    @Select("SELECT * FROM book WHERE AND `status` = '完本' ORDER BY `data` DESC LIMIT 0,6")
+    @Select("SELECT * FROM book WHERE `status` = '完本' ORDER BY `data` DESC LIMIT 0,6")
     List<Book> getEndBook();
 
     /**

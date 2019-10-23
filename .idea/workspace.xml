@@ -11,9 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a85490a5-67b8-4c86-ab6d-d544d7c9232d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/yong/book/controller/PhoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/yong/book/controller/PhoneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/yong/book/mapper/PhoneMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/yong/book/mapper/PhoneMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/controller/PhoneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/controller/PhoneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/yong/book/mapper/PhoneMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/yong/book/mapper/PhoneMapper.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -116,8 +115,8 @@
       <file leaf-file-name="PhoneMapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/yong/book/mapper/PhoneMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="42" column="83" selection-start-line="42" selection-start-column="83" selection-end-line="42" selection-end-column="83" />
+            <state relative-caret-position="536">
+              <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -809,7 +808,7 @@
       <workItem from="1571378275510" duration="1793000" />
       <workItem from="1571411711222" duration="1899000" />
       <workItem from="1571632930403" duration="1605000" />
-      <workItem from="1571801156256" duration="472000" />
+      <workItem from="1571801156256" duration="988000" />
     </task>
     <task id="LOCAL-00001" summary="更新1.0">
       <created>1571633596223</created>
@@ -825,11 +824,18 @@
       <option name="project" value="LOCAL" />
       <updated>1571633887864</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更新书城请求拿不到数据问题">
+      <created>1571801694568</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571801694568</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="478718000" />
+    <option name="totallyTimeSpent" value="479234000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -847,7 +853,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" weight="0.32713178" />
       <window_info anchor="bottom" id="Application Servers" order="8" weight="0.32838285" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.25113463" />
+      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.25113463" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -926,7 +932,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新1.0" />
+    <MESSAGE value="更新书城请求拿不到数据问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新书城请求拿不到数据问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1207,13 +1214,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
@@ -1235,10 +1235,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/yong/book/mapper/PhoneMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="42" column="83" selection-start-line="42" selection-start-column="83" selection-end-line="42" selection-end-column="83" />
+        <state relative-caret-position="536">
+          <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
         </state>
       </provider>
     </entry>
