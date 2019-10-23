@@ -32,7 +32,7 @@ public interface PhoneMapper {
      *
      * @return
      */
-    @Select("SELECT * FROM book WHERE `monthlyClicks` > 10000 LIMIT 0 , 6")
+    @Select("SELECT * FROM book ORDER BY totalHits DESC  LIMIT 0 , 6")
     List<Book> getMyBook();
 
     /**
@@ -40,7 +40,7 @@ public interface PhoneMapper {
      *
      * @return
      */
-    @Select("SELECT * FROM book WHERE `monthlyClicks` > 10000 AND `status` = '连载中' LIMIT 6 , 6")
+    @Select("SELECT * FROM book WHERE `status` = '连载中' ORDER BY `data` DESC LIMIT 6,6")
     List<Book> getHotBook();
 
     /**
@@ -48,7 +48,7 @@ public interface PhoneMapper {
      *
      * @return
      */
-    @Select("SELECT * FROM book WHERE `monthlyClicks` > 10000 AND `status` = '连载中' ORDER BY `data` DESC LIMIT 0,6")
+    @Select("SELECT * FROM book WHERE `status` = '连载中' ORDER BY `data` DESC LIMIT 0,6")
     List<Book> getNewBook();
 
     /**
@@ -56,7 +56,7 @@ public interface PhoneMapper {
      *
      * @return
      */
-    @Select("SELECT * FROM book WHERE `monthlyClicks` > 600 AND `status` = '完本' ORDER BY `data` DESC LIMIT 0,6")
+    @Select("SELECT * FROM book WHERE AND `status` = '完本' ORDER BY `data` DESC LIMIT 0,6")
     List<Book> getEndBook();
 
     /**
