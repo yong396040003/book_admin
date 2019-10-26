@@ -30,7 +30,6 @@ public class InitController {
      */
     @RequestMapping("/")
     public String login(Model model, HttpServletRequest request) {
-        System.err.println(ResourcePath.resourcePath);
         //判断session是否存在
         String username = CheckoutSession.checkoutSession(request);
         if (username != null) {

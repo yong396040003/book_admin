@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
 
 
 spring:
@@ -12,7 +12,7 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #\u57FA\u672C\u5C5E\u6027 172.31.147.213
-          url: jdbc:mysql://172.31.147.213:3306/bam?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+          url: jdbc:mysql://localhost:3306/bam?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
           username: root
           password: yong12345
           #\u914D\u7F6E\u521D\u59CB\u5316\u5927\u5C0F/\u6700\u5C0F/\u6700\u5927

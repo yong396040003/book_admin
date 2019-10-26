@@ -12,6 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="book_admin (1)" target="1.5" />
+      <module name="phone_book" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

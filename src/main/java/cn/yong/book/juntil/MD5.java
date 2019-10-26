@@ -48,8 +48,7 @@ public class MD5 {
             char strs[] = new char[j*2];
             int count = 0;
             // 从第一个字节开始，对每一个字节,转换成 16 进制字符的转换
-            for(int i = 0; i < j; i++){
-                byte byte0 = md[i];
+            for (byte byte0 : md) {
                 // 取字节中高 4 位的数字转换, >>> 为逻辑右移，将符号位一起右移
                 strs[count++] = chars[byte0 >>> 4 & 0xf];
                 // 取字节中低 4 位的数字转换
@@ -57,9 +56,8 @@ public class MD5 {
             }
             String s1 = new String(strs);
             //截取字符串
-            String s2 = s1.substring(5,15);
             //返回加密后的字符串
-            return s2;
+            return s1.substring(5,15);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
